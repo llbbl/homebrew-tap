@@ -21,6 +21,7 @@ brew install lsm
 |---------|-------------|----------|
 | `lsm` | Per-app, per-environment age-encrypted secrets manager | [llbbl/lsm](https://github.com/llbbl/lsm) |
 | `dfm` | Manage, version, and AI-improve dotfiles with a private backup repo | [llbbl/dotfiles-manager](https://github.com/llbbl/dotfiles-manager) |
+| `upkeep` | JS/TS repository maintenance toolkit built with Bun | [llbbl/upkeep](https://github.com/llbbl/upkeep) |
 
 ## Maintaining
 
