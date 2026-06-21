@@ -1,0 +1,118 @@
+name: Update upkeep formula
+
+# GitHub Actions has no native "wait N hours" primitive (jobs cap at 6h, and
+# you can't schedule a one-off future run), so we do NOT trigger off the
+# upstream release event. Instead a schedule polls upstream and only bumps the
+# formula once the latest release has aged past MIN_AGE_HOURS. That guarantees
+# a minimum hold window (default 24h) and self-heals if a run is missed.
+#
+# With a 6h cron + 24h gate, a bump lands within ~[release+24h, release+30h].
+#
+# NOTE: GitHub disables scheduled workflows after 60 days with no repo
+# activity. Releases keep this repo active; if it ever goes quiet longer than
+# that, re-enable from the Actions tab or use the manual run below.
+
+on:
+  schedule:
+    - cron: "57 */6 * * *"   # every 6 hours, offset off lsm (:17) and dfm (:37)
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Bump immediately, ignoring the hold window"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-upkeep-formula
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    env:
+      UPSTREAM: llbbl/upkeep
+      FORMULA: Formula/upkeep.rb
+      MIN_AGE_HOURS: "24"
+      GH_TOKEN: ${{ github.token }}
+      FORCE: ${{ github.event.inputs.force || 'false' }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Resolve latest upstream release
+        id: rel
+        run: |
+          set -euo pipefail
+
+          # Latest stable release (isLatest excludes drafts and prereleases).
+          line=$(gh release list --repo "$UPSTREAM" --limit 30 \
+                   --json tagName,publishedAt,isLatest \
+                   --jq 'map(select(.isLatest)) | first | "\(.tagName)\t\(.publishedAt)"')
+          tag=${line%%$'\t'*}
+          published=${line#*$'\t'}
+          if [ -z "$tag" ] || [ "$tag" = "null" ]; then
+            echo "No stable upstream release found; nothing to do."
+            echo "skip=true" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+
+          current=$(grep -E '^\s*version\s+"' "$FORMULA" | head -1 | sed -E 's/.*"([^"]+)".*/\1/')
+          echo "Upstream latest: $tag (published $published) | formula: v$current"
+
+          if [ "v$current" = "$tag" ]; then
+            echo "Formula already at $tag; nothing to do."
+            echo "skip=true" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+
+          # Minimum release window: gate on the release's age.
+          age_h=$(( ( $(date -u +%s) - $(date -u -d "$published" +%s) ) / 3600 ))
+          echo "Release age: ${age_h}h (min ${MIN_AGE_HOURS}h, force=${FORCE})"
+          if [ "$age_h" -lt "$MIN_AGE_HOURS" ] && [ "$FORCE" != "true" ]; then
+            echo "Release is within the ${MIN_AGE_HOURS}h hold window; will revisit on a later run."
+            echo "skip=true" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+
+          echo "skip=false" >> "$GITHUB_OUTPUT"
+          echo "tag=$tag"   >> "$GITHUB_OUTPUT"
+
+      - name: Bump formula
+        if: steps.rel.outputs.skip != 'true'
+        env:
+          TAG: ${{ steps.rel.outputs.tag }}
+        run: |
+          set -euo pipefail
+
+          version="${TAG#v}"
+
+          tmp=$(mktemp -d)
+          gh release download "$TAG" --repo "$UPSTREAM" --pattern checksums.txt --dir "$tmp"
+
+          # checksums.txt lines are "<sha256>  <archive-name>". upkeep ships
+          # GoReleaser archives: upkeep_<version>_<os>_<arch>.tar.gz (the
+          # version has no leading 'v' and uses underscores).
+          sha() { grep -E "  upkeep_${version}_$1\$" "$tmp/checksums.txt" | awk '{print $1}'; }
+          da_arm=$(sha 'darwin_arm64.tar.gz')
+          da_amd=$(sha 'darwin_amd64.tar.gz')
+          lx_arm=$(sha 'linux_arm64.tar.gz')
+          lx_amd=$(sha 'linux_amd64.tar.gz')
+
+          for s in "$da_arm" "$da_amd" "$lx_arm" "$lx_amd"; do
+            if [ -z "$s" ]; then
+              echo "::error::checksums.txt for $TAG is missing an expected archive sha256"
+              exit 1
+            fi
+          done
+
+          bash scripts/render-upkeep-formula.sh "$TAG" "$da_arm" "$da_amd" "$lx_arm" "$lx_amd" > "$FORMULA"
+
+          if git diff --quiet -- "$FORMULA"; then
+            echo "Formula already matches rendered output; nothing to commit."
+            exit 0
+          fi
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "$FORMULA"
+          git commit -m "Update upkeep formula to $TAG"
+          git push
