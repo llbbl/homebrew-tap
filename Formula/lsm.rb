@@ -1,12 +1,10 @@
 # typed: false
 # frozen_string_literal: true
-
-# Homebrew formula for lsm — Local Secrets Manager.
 #
-# Installs the prebuilt binary from the per-OS release archives published at
-# https://github.com/llbbl/lsm/releases. On each new lsm release, update
-# `version`, the four `url`s, and the four `sha256`s below. The sha256 values
-# are published in the release's checksums.txt.
+# AUTO-GENERATED on each upstream lsm release (after a hold window) by
+# .github/workflows/update-lsm-formula.yml via scripts/render-formula.sh.
+# Do not edit Formula/lsm.rb by hand — changes are overwritten on the next
+# release. To change formatting, edit scripts/render-formula.sh instead.
 class Lsm < Formula
   desc "Per-app, per-environment age-encrypted secrets manager"
   homepage "https://github.com/llbbl/lsm"
