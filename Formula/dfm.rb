@@ -8,28 +8,28 @@
 class Dfm < Formula
   desc "Manage, version, and AI-improve dotfiles with a private backup repo"
   homepage "https://github.com/llbbl/dotfiles-manager"
-  version "1.7.0"
+  version "1.9.1"
   license "FSL-1.1-MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/llbbl/dotfiles-manager/releases/download/v1.7.0/dfm_1.7.0_darwin_arm64.tar.gz"
-      sha256 "1435c45ece42f8efea524b99a8669d2155a7b6054a5813aacea07fc4dc03c548"
+      url "https://github.com/llbbl/dotfiles-manager/releases/download/v1.9.1/dfm_1.9.1_darwin_arm64.tar.gz"
+      sha256 "043c1109ece10ab7ca40bf2b8be896e9e5c1d431f33ea536161f15baab74c63f"
     end
     on_intel do
-      url "https://github.com/llbbl/dotfiles-manager/releases/download/v1.7.0/dfm_1.7.0_darwin_amd64.tar.gz"
-      sha256 "24f138033cb63850d23b6928cf3c953786d4ed62fae2fa94f686e1f12c7cb528"
+      url "https://github.com/llbbl/dotfiles-manager/releases/download/v1.9.1/dfm_1.9.1_darwin_amd64.tar.gz"
+      sha256 "9c6752d1ecdec94cd135533a31db0a4c3a6e2ad19378281948967ffedbfb6ad0"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/llbbl/dotfiles-manager/releases/download/v1.7.0/dfm_1.7.0_linux_arm64.tar.gz"
-      sha256 "937fa0735db76fa3acc3076e54633612af36b25f2bdf612ae1ad45065aa7c296"
+      url "https://github.com/llbbl/dotfiles-manager/releases/download/v1.9.1/dfm_1.9.1_linux_arm64.tar.gz"
+      sha256 "baddf49d5d8dfd5bd233d243b5330efe2e298020287b4482e2e60e888665f4d4"
     end
     on_intel do
-      url "https://github.com/llbbl/dotfiles-manager/releases/download/v1.7.0/dfm_1.7.0_linux_amd64.tar.gz"
-      sha256 "9c5f104117782e6e6bac969a0cf966b7cbb264724eddbebb39eeb4c644bbf0bf"
+      url "https://github.com/llbbl/dotfiles-manager/releases/download/v1.9.1/dfm_1.9.1_linux_amd64.tar.gz"
+      sha256 "248a4e7e8350ad387f46b230667e007cb5d0e11c3c94b04583f5eea771faa9cb"
     end
   end
 
