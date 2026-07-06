@@ -8,28 +8,28 @@
 class Lsm < Formula
   desc "Per-app, per-environment age-encrypted secrets manager"
   homepage "https://github.com/llbbl/lsm"
-  version "0.10.0"
+  version "0.11.2"
   license "BSD-3-Clause"
 
   on_macos do
     on_arm do
-      url "https://github.com/llbbl/lsm/releases/download/v0.10.0/lsm-v0.10.0-darwin-arm64.tar.gz"
-      sha256 "c18b675b606b4175286eef1b3905d9c7eea897a508c29214fe111f4292964792"
+      url "https://github.com/llbbl/lsm/releases/download/v0.11.2/lsm-v0.11.2-darwin-arm64.tar.gz"
+      sha256 "c6aee81c64bf568c6ea20f2cdeaa045bde562a832815d407ab1d4237a002c469"
     end
     on_intel do
-      url "https://github.com/llbbl/lsm/releases/download/v0.10.0/lsm-v0.10.0-darwin-amd64.tar.gz"
-      sha256 "dd31f637cf6a808708e96e46c805c79ea45ba5534a83d19758dec89544da5c44"
+      url "https://github.com/llbbl/lsm/releases/download/v0.11.2/lsm-v0.11.2-darwin-amd64.tar.gz"
+      sha256 "c1986c8d7e0189a47ae18c268aef69eb7d7f8742b1a55a875a5fecf2fab7e56e"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/llbbl/lsm/releases/download/v0.10.0/lsm-v0.10.0-linux-arm64.tar.gz"
-      sha256 "20cfc6e7065b3169392c9b5ff6ef7cd71e3da8dcf34c0fdacd8e024f2ac2469a"
+      url "https://github.com/llbbl/lsm/releases/download/v0.11.2/lsm-v0.11.2-linux-arm64.tar.gz"
+      sha256 "f13d18436db4f49456937f308a2c9506076522d1c6e905730398ba7b2548380a"
     end
     on_intel do
-      url "https://github.com/llbbl/lsm/releases/download/v0.10.0/lsm-v0.10.0-linux-amd64.tar.gz"
-      sha256 "ce2970ff8ec3815d25028d43bb7c954730633c8c718ff811db8635cc7e67b055"
+      url "https://github.com/llbbl/lsm/releases/download/v0.11.2/lsm-v0.11.2-linux-amd64.tar.gz"
+      sha256 "8fb1822172d1ae065d43936ddf065b986b85dd8ec57f3d4e9960594dacb06a99"
     end
   end
 
