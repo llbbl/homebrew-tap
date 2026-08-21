@@ -1,6 +1,6 @@
 # typed: false
 # frozen_string_literal: true
-#
+
 # AUTO-GENERATED on each upstream dotfiles-manager release (after a hold window)
 # by .github/workflows/update-dfm-formula.yml via scripts/render-dfm-formula.sh.
 # Do not edit Formula/dfm.rb by hand — changes are overwritten on the next

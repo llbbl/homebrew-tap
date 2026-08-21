@@ -1,6 +1,6 @@
 # typed: false
 # frozen_string_literal: true
-#
+
 # AUTO-GENERATED on each upstream lsm release (after a hold window) by
 # .github/workflows/update-lsm-formula.yml via scripts/render-formula.sh.
 # Do not edit Formula/lsm.rb by hand — changes are overwritten on the next

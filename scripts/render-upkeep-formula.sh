@@ -34,7 +34,7 @@ version="${tag#v}"
 cat <<EOF
 # typed: false
 # frozen_string_literal: true
-#
+
 # AUTO-GENERATED on each upstream upkeep release (after a hold window) by
 # .github/workflows/update-upkeep-formula.yml via scripts/render-upkeep-formula.sh.
 # Do not edit Formula/upkeep.rb by hand — changes are overwritten on the next
