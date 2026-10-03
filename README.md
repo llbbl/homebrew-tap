@@ -19,7 +19,7 @@ brew trust --formula llbbl/tap/lsm
 brew install lsm
 ```
 
-Replace `lsm` with `dfm`, `upkeep`, or `uncov` to trust and install another formula.
+Replace `lsm` with `dfm`, `upkeep`, `uncov`, or `agentsync` to trust and install another formula.
 
 ### Trust the whole tap
 
@@ -70,6 +70,7 @@ instead of `llbbl/uncov/uncov`.
 | `dfm` | Manage, version, and AI-improve dotfiles with a private backup repo | [llbbl/dotfiles-manager](https://github.com/llbbl/dotfiles-manager) |
 | `upkeep` | JS/TS repository maintenance toolkit built with Bun | [llbbl/upkeep](https://github.com/llbbl/upkeep) |
 | `uncov` | Report files with low test coverage from Vitest/Istanbul output | [llbbl/uncov](https://github.com/llbbl/uncov) |
+| `agentsync` | Provision Claude Code agents into projects as symlinks from one canonical repo | [agentic-tooling/agentsync](https://github.com/agentic-tooling/agentsync) |
 
 ## Maintaining
 
@@ -79,6 +80,6 @@ a 24-hour hold. Manual dispatch with `force: true` bypasses the hold.
 
 Update the matching `scripts/render-*-formula.sh` (or `scripts/render-formula.sh`
 for `lsm`) for durable formula changes. Release bumps update `version`, artifact
-URLs, and SHA-256 values. `lsm`, `dfm`, and `upkeep` use upstream `checksums.txt`;
+URLs, and SHA-256 values. `lsm`, `dfm`, `upkeep`, and `agentsync` use upstream `checksums.txt`;
 `uncov` ships bare binaries, so its updater downloads the three supported Unix
 binaries and computes their SHA-256 hashes directly.
