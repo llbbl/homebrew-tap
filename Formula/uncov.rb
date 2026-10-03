@@ -8,25 +8,25 @@
 class Uncov < Formula
   desc "CLI tool that reports files with low test coverage from Vitest/Istanbul output"
   homepage "https://github.com/llbbl/uncov"
-  version "0.1.7"
+  version "0.1.8"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/llbbl/uncov/releases/download/v0.1.7/uncov-darwin-arm64"
-      sha256 "ba7bd47126d9564e47813ee29d21fcb0c8477fa5dcd03ee53f63f178c35125c7"
+      url "https://github.com/llbbl/uncov/releases/download/v0.1.8/uncov-darwin-arm64"
+      sha256 "9195225d0f8f839e946948409c97a2ac53cbe37c8e94c9c90aa590c51267e3c2"
     end
 
     on_intel do
-      url "https://github.com/llbbl/uncov/releases/download/v0.1.7/uncov-darwin-x64"
-      sha256 "8afcede9e31e3bfe46901e1afafb25723edc5264cc3d651d2c0457d9ddbf6e5f"
+      url "https://github.com/llbbl/uncov/releases/download/v0.1.8/uncov-darwin-x64"
+      sha256 "53327dab9878bd506196c55ead10b0980755c6bd4f4edf7cfad96afd927ddd06"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/llbbl/uncov/releases/download/v0.1.7/uncov-linux-x64"
-      sha256 "6572182814b6f93b62fa84e66fabc05f1a9ceab4df59fe45e4cee954c4b08a53"
+      url "https://github.com/llbbl/uncov/releases/download/v0.1.8/uncov-linux-x64"
+      sha256 "697bc7881180277eb4ce74248156c7210fde9a55d5c1e9405822edc247345241"
     end
   end
 
