@@ -25,6 +25,12 @@ lx_arm="$4"
 lx_amd="$5"
 version="${tag#v}"
 
+# Values are interpolated into Ruby, so anything unexpected is refused.
+[[ "$tag" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] || { echo "invalid tag: $tag" >&2; exit 1; }
+for s in "$da_arm" "$da_amd" "$lx_arm" "$lx_amd"; do
+  [[ "$s" =~ ^[0-9a-f]{64}$ ]] || { echo "invalid sha256: $s" >&2; exit 1; }
+done
+
 # Unquoted heredoc: ${...} bash vars expand; Ruby's #{...} has no '$' so it
 # passes through literally.
 cat <<EOF
