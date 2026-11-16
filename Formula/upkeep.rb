@@ -8,28 +8,28 @@
 class Upkeep < Formula
   desc "JS/TS repository maintenance toolkit built with Bun"
   homepage "https://github.com/llbbl/upkeep"
-  version "0.6.7"
+  version "0.6.8"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/llbbl/upkeep/releases/download/v0.6.7/upkeep_0.6.7_darwin_arm64.tar.gz"
-      sha256 "0486acf656e45633dfad921bb2a3ab4e2a20324f218f697b4773a94821582af6"
+      url "https://github.com/llbbl/upkeep/releases/download/v0.6.8/upkeep_0.6.8_darwin_arm64.tar.gz"
+      sha256 "47e30161091a60ecd16af0278776ff1250131a107580be7aa3ef0959a19c396d"
     end
     on_intel do
-      url "https://github.com/llbbl/upkeep/releases/download/v0.6.7/upkeep_0.6.7_darwin_amd64.tar.gz"
-      sha256 "821122235adacd3582332109b2498d74042cae16937bcd594fffca4f7192b4f9"
+      url "https://github.com/llbbl/upkeep/releases/download/v0.6.8/upkeep_0.6.8_darwin_amd64.tar.gz"
+      sha256 "d87720a810ae66272950b703972a89688b7ee0ba388d62e42108b353ea1621d0"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/llbbl/upkeep/releases/download/v0.6.7/upkeep_0.6.7_linux_arm64.tar.gz"
-      sha256 "d76a29d60c459764b1f08cc6fc4e867fb70998e81dff8d3f5de513756eb5c685"
+      url "https://github.com/llbbl/upkeep/releases/download/v0.6.8/upkeep_0.6.8_linux_arm64.tar.gz"
+      sha256 "80d94d4b13d0e6ef33b1483ce83c7cf71a39fa46f2efb141e6ed9a5749fdcea4"
     end
     on_intel do
-      url "https://github.com/llbbl/upkeep/releases/download/v0.6.7/upkeep_0.6.7_linux_amd64.tar.gz"
-      sha256 "7bebce3df1adba47ea8fc251033383ea3813d36129a01295dbbb6714dc4f10c9"
+      url "https://github.com/llbbl/upkeep/releases/download/v0.6.8/upkeep_0.6.8_linux_amd64.tar.gz"
+      sha256 "0e42ea04741512a9c7e10c82098a23c969f7d352e9b5d05f52cbf46651ef4865"
     end
   end
 
