@@ -8,28 +8,28 @@
 class Dfm < Formula
   desc "Manage, version, and AI-improve dotfiles with a private backup repo"
   homepage "https://github.com/llbbl/dotfiles-manager"
-  version "1.14.0"
+  version "1.14.8"
   license "FSL-1.1-MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/llbbl/dotfiles-manager/releases/download/v1.14.0/dfm_1.14.0_darwin_arm64.tar.gz"
-      sha256 "c23bb4e73fc886ef2cf59f88576ed6d82b78d70ac21e107388becf00e13fe420"
+      url "https://github.com/llbbl/dotfiles-manager/releases/download/v1.14.8/dfm_1.14.8_darwin_arm64.tar.gz"
+      sha256 "a69d25e6fc1b3f49c87b1583baff088b5c7d1216b8ee30e0d0093d26bf5fddb7"
     end
     on_intel do
-      url "https://github.com/llbbl/dotfiles-manager/releases/download/v1.14.0/dfm_1.14.0_darwin_amd64.tar.gz"
-      sha256 "7d513d0509f39bb676cfc9a19acd9696a0f84f950f5f69a3258d89d2dde14d92"
+      url "https://github.com/llbbl/dotfiles-manager/releases/download/v1.14.8/dfm_1.14.8_darwin_amd64.tar.gz"
+      sha256 "163d019a02f8c1fdb1f442dcefdb470f27295ecfc05595bc444a9199b8c53b1a"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/llbbl/dotfiles-manager/releases/download/v1.14.0/dfm_1.14.0_linux_arm64.tar.gz"
-      sha256 "17c6bd39092f326f6fa80a313d9eae38cf989bc4dbb74957acb760e55852ba5c"
+      url "https://github.com/llbbl/dotfiles-manager/releases/download/v1.14.8/dfm_1.14.8_linux_arm64.tar.gz"
+      sha256 "7955390e77571775286b29971d8af9506f366caa9d3eb78af3ba1462f1a93c54"
     end
     on_intel do
-      url "https://github.com/llbbl/dotfiles-manager/releases/download/v1.14.0/dfm_1.14.0_linux_amd64.tar.gz"
-      sha256 "224ae1dd9b36a34daf855876fbf56eff96b87ea786367f3515b0e1a7e776f4c6"
+      url "https://github.com/llbbl/dotfiles-manager/releases/download/v1.14.8/dfm_1.14.8_linux_amd64.tar.gz"
+      sha256 "d94dc610959e5ffbee1fc48e016cb16c1e733f6669f8e575e6e1cea7acbcf6f4"
     end
   end
 
